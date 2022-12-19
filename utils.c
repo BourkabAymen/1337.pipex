@@ -6,7 +6,7 @@
 /*   By: abourkab <abourkab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:33:25 by abourkab          #+#    #+#             */
-/*   Updated: 2022/12/19 12:28:18 by abourkab         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:10:49 by abourkab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 // This function display an error message  
 int	print_error(char *message)
 {
-	ft_putendl_fd(message, 1);
+	ft_putendl_fd(message, 2);
 	exit(1);
 }
-// This function display an error message to stderror
-int	exit_with_error(void)
-{
-	perror("Error");
-	exit(1);
-}
+
 // This function returns 1 if sub is in s
 int	ft_contains(char *s, char *sub)
 {
@@ -100,8 +95,8 @@ void	execute(char *av, char **envp, char **cmd)
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		exit_with_error();
+		print_error("Error");
 	}
 	if (execve(path, cmd, envp) == -1)
-		exit_with_error();
+		print_error("Error");
 }

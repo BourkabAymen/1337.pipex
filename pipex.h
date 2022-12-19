@@ -6,7 +6,7 @@
 /*   By: abourkab <abourkab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:33:11 by abourkab          #+#    #+#             */
-/*   Updated: 2022/12/19 12:24:22 by abourkab         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:43:07 by abourkab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		print_error(char *message);
 char	*find_path(char *cmd, char **env);
 int		ft_contains(char *s, char *sub);
 void	execute(char *av, char **envp, char **cmd);
-int		exit_with_error(void);
 
 typedef struct s_var {
 	int		args;

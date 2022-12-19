@@ -6,7 +6,7 @@
 /*   By: abourkab <abourkab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 17:32:55 by abourkab          #+#    #+#             */
-/*   Updated: 2022/12/11 11:10:47 by abourkab         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:29:19 by abourkab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	child_process(char **av, char **envp, int *fd, char **cmd)
 
 	filein = open(av[1], O_RDONLY);
 	if (filein == -1)
-		print_error("Error");
+		exit_with_error();
 	dup2(fd[1], 1);
 	dup2(filein, 0);
 	close(fd[0]);
@@ -39,9 +39,9 @@ void	parent_process(char **av, char **envp, int *fd, char **cmd)
 {
 	int	fileout;
 
-	fileout = open(av[4], O_WRONLY | O_CREAT, 777);
+	fileout = open(av[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fileout == -1)
-		print_error("Error");
+		exit_with_error();
 	dup2(fd[0], 0);
 	dup2(fileout, 1);
 	close(fd[1]);
@@ -75,10 +75,10 @@ int	main(int ac, char **av, char **envp)
 	else
 	{
 		if (pipe(var.fd) == -1)
-			print_error("Error");
+			exit_with_error();
 		var.pid = fork();
 		if (var.pid == -1)
-			print_error("Error");
+			exit_with_error();
 		if (var.pid == 0)
 			child_process(av, envp, var.fd, var.cmd);
 		waitpid(var.pid, NULL, 0);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: abourkab <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: abourkab <abourkab@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 17:32:34 by abourkab          #+#    #+#              #
-#    Updated: 2022/12/08 17:34:07 by abourkab         ###   ########.fr        #
+#    Updated: 2022/12/18 12:42:24 by abourkab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,5 +34,5 @@ clean:
 fclean: clean
 	${RM} ${NAME}
 	${MAKE} fclean -C libft 
-
+	
 re: fclean all
